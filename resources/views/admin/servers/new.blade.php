@@ -95,6 +95,24 @@
                         <select id="pAllocationAdditional" name="allocation_additional[]" class="form-control" multiple></select>
                         <p class="small text-muted no-margin">Additional allocations to assign to this server on creation.</p>
                     </div>
+
+                    
+                    <div class="form-group col-sm-6">
+                        <label for="upload_bw_limit" class="control-label">Maximum upload bandwidth</label>
+                        <div class="input-group">
+                            <input type="text" name="upload_bw_limit" class="form-control" value="{{ old('upload_bw_limit', $node->upload_bw_limit) }}"/>
+                            <span class="input-group-addon">MiBps</span>
+                        </div>
+                        <p class="text-muted"><small>Enter the maximum upload bandwidth. Only apply for servers on local node.</small></p>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="download_bw_limit" class="control-label">Maximum download bandwidth</label>
+                        <div class="input-group">
+                            <input type="text" name="download_bw_limit" class="form-control" value="{{ old('download_bw_limit', $node->download_bw_limit) }}"/>
+                            <span class="input-group-addon">MiBps</span>
+                        </div>
+                        <p class="text-muted"><small>Enter the maximum download bandwidth. Only apply for servers on local node.</small></p>
+                    </div>
                 </div>
             </div>
         </div>

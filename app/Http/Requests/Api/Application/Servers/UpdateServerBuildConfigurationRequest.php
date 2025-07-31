@@ -55,7 +55,6 @@ class UpdateServerBuildConfigurationRequest extends ServerWriteRequest
     public function validated($key = null, $default = null): array
     {
         $data = parent::validated();
-
         $data['allocation_id'] = $data['allocation'];
         $data['database_limit'] = $data['feature_limits']['databases'] ?? null;
         $data['allocation_limit'] = $data['feature_limits']['allocations'] ?? null;

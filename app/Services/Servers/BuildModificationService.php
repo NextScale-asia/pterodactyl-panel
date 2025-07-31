@@ -32,6 +32,7 @@ class BuildModificationService
      */
     public function handle(Server $server, array $data): Server
     {
+
         /** @var \Pterodactyl\Models\Server $server */
         $server = $this->connection->transaction(function () use ($server, $data) {
             $this->processAllocations($server, $data);
@@ -43,15 +44,16 @@ class BuildModificationService
                     throw new DisplayException('The requested default allocation is not currently assigned to this server.');
                 }
             }
-
             // If any of these values are passed through in the data array go ahead and set
             // them correctly on the server model.
-            $merge = Arr::only($data, ['oom_disabled', 'memory', 'swap', 'io', 'cpu', 'threads', 'disk', 'allocation_id']);
-
+            $merge = Arr::only($data, ['oom_disabled', 'memory', 'swap', 'io', 'cpu', 'threads', 'disk', 'allocation_id', 'upload_bw_limit', 'download_bw_limit']);
+            
             $server->forceFill(array_merge($merge, [
                 'database_limit' => Arr::get($data, 'database_limit', 0) ?? null,
                 'allocation_limit' => Arr::get($data, 'allocation_limit', 0) ?? null,
                 'backup_limit' => Arr::get($data, 'backup_limit', 0) ?? 0,
+                'upload_bw_limit' => Arr::get($data, 'upload_bw_limit', -1) ?? -1,
+                'download_bw_limit' => Arr::get($data, 'download_bw_limit', -1) ?? -1,
             ]))->saveOrFail();
 
             return $server->refresh();

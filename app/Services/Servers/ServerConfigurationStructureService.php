@@ -76,6 +76,8 @@ class ServerConfigurationStructureService
                     'port' => $server->allocation->port,
                 ],
                 'mappings' => $server->getAllocationMappings(),
+                'upload_bw_limit' => $server->upload_bw_limit,
+                'download_bw_limit' => $server->download_bw_limit,
             ],
             'mounts' => $server->mounts->map(function (Mount $mount) {
                 return [
@@ -118,6 +120,8 @@ class ServerConfigurationStructureService
                 'threads' => $server->threads,
                 'disk' => (int) $server->disk,
                 'image' => $server->image,
+                'upload_bw_limit' => $server->upload_bw_limit,
+                'download_bw_limit' => $server->download_bw_limit,
             ],
             'service' => [
                 'egg' => $server->egg->uuid,
