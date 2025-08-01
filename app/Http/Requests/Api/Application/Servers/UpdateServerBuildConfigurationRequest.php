@@ -46,6 +46,8 @@ class UpdateServerBuildConfigurationRequest extends ServerWriteRequest
             'feature_limits.databases' => $rules['database_limit'],
             'feature_limits.allocations' => $rules['allocation_limit'],
             'feature_limits.backups' => $rules['backup_limit'],
+            'upload_bw_limit' => $rules['upload_bw_limit'],
+            'download_bw_limit' => $rules['download_bw_limit'],
         ];
     }
 
@@ -59,6 +61,8 @@ class UpdateServerBuildConfigurationRequest extends ServerWriteRequest
         $data['database_limit'] = $data['feature_limits']['databases'] ?? null;
         $data['allocation_limit'] = $data['feature_limits']['allocations'] ?? null;
         $data['backup_limit'] = $data['feature_limits']['backups'] ?? null;
+        $data['upload_bw_limit'] = $data['upload_bw_limit'] ?? -1;
+        $data['download_bw_limit'] = $data['download_bw_limit'] ?? -1;
         unset($data['allocation'], $data['feature_limits']);
 
         // Adjust the limits field to match what is expected by the model.

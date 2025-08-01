@@ -77,6 +77,8 @@ class ServerTransformer extends BaseTransformer
             'user' => $server->owner_id,
             'node' => $server->node_id,
             'allocation' => $server->allocation_id,
+            'upload_bw_limit' => $server->upload_bw_limit,
+            'download_bw_limit' => $server->download_bw_limit,
             'nest' => $server->nest_id,
             'egg' => $server->egg_id,
             'container' => [

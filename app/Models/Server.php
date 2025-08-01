@@ -167,6 +167,8 @@ class Server extends Model
         'database_limit' => 'present|nullable|integer|min:0',
         'allocation_limit' => 'sometimes|nullable|integer|min:0',
         'backup_limit' => 'present|nullable|integer|min:0',
+        'upload_bw_limit' => 'present|nullable|integer|min:-1',
+        'download_bw_limit' => 'present|nullable|integer|min:-1',
     ];
 
     /**
@@ -188,6 +190,8 @@ class Server extends Model
         'database_limit' => 'integer',
         'allocation_limit' => 'integer',
         'backup_limit' => 'integer',
+        'upload_bw_limit' => 'integer',
+        'download_bw_limit' => 'integer',
         self::CREATED_AT => 'datetime',
         self::UPDATED_AT => 'datetime',
         'deleted_at' => 'datetime',

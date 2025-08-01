@@ -42,6 +42,8 @@ class StoreServerRequest extends ApplicationApiRequest
             'limits.io' => $rules['io'],
             'limits.threads' => $rules['threads'],
             'limits.cpu' => $rules['cpu'],
+            'limits.upload_bw' => $rules['upload_bw'],
+            'limits.upload_bw' => $rules['upload_bw'],
 
             // Application Resource Limits
             'feature_limits' => 'required|array',
@@ -87,6 +89,8 @@ class StoreServerRequest extends ApplicationApiRequest
             'io' => array_get($data, 'limits.io'),
             'cpu' => array_get($data, 'limits.cpu'),
             'threads' => array_get($data, 'limits.threads'),
+            'upload_bw' => array_get($data, 'limits.upload_bw'),
+            'download_bw' => array_get($data, 'limits.download_bw'),
             'skip_scripts' => array_get($data, 'skip_scripts', false),
             'allocation_id' => array_get($data, 'allocation.default'),
             'allocation_additional' => array_get($data, 'allocation.additional'),
