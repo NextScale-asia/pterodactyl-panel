@@ -55,6 +55,7 @@ class ServerController extends ApplicationApiController
      */
     public function store(StoreServerRequest $request): JsonResponse
     {
+
         $server = $this->creationService->handle($request->validated(), $request->getDeploymentObject());
 
         return $this->fractal->item($server)

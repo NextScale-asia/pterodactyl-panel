@@ -92,7 +92,7 @@ class ServerCreationService
 
             return $server;
         }, 5);
-
+        
         try {
             $this->daemonServerRepository->setServer($server)->create(
                 Arr::get($data, 'start_on_completion', false) ?? false
@@ -162,6 +162,8 @@ class ServerCreationService
             'database_limit' => Arr::get($data, 'database_limit') ?? 0,
             'allocation_limit' => Arr::get($data, 'allocation_limit') ?? 0,
             'backup_limit' => Arr::get($data, 'backup_limit') ?? 0,
+            'upload_bw_limit' => Arr::get($data, 'upload_bw_limit') ?? -1,
+            'download_bw_limit' => Arr::get($data, 'download_bw_limit') ?? -1,
         ]);
 
         return $model;

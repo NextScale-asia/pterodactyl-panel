@@ -21,7 +21,7 @@ class StoreServerRequest extends ApplicationApiRequest
     public function rules(): array
     {
         $rules = Server::getRules();
-
+        
         return [
             'external_id' => $rules['external_id'],
             'name' => $rules['name'],
@@ -42,8 +42,6 @@ class StoreServerRequest extends ApplicationApiRequest
             'limits.io' => $rules['io'],
             'limits.threads' => $rules['threads'],
             'limits.cpu' => $rules['cpu'],
-            'limits.upload_bw' => $rules['upload_bw'],
-            'limits.upload_bw' => $rules['upload_bw'],
 
             // Application Resource Limits
             'feature_limits' => 'required|array',
@@ -64,6 +62,8 @@ class StoreServerRequest extends ApplicationApiRequest
             'deploy.port_range.*' => 'string',
 
             'start_on_completion' => 'sometimes|boolean',
+            'upload_bw_limit' => $rules['upload_bw_limit'],
+            'download_bw_limit' => $rules['download_bw_limit'],
         ];
     }
 
@@ -73,7 +73,7 @@ class StoreServerRequest extends ApplicationApiRequest
     public function validated($key = null, $default = null): array
     {
         $data = parent::validated();
-
+        
         return [
             'external_id' => array_get($data, 'external_id'),
             'name' => array_get($data, 'name'),
@@ -89,8 +89,8 @@ class StoreServerRequest extends ApplicationApiRequest
             'io' => array_get($data, 'limits.io'),
             'cpu' => array_get($data, 'limits.cpu'),
             'threads' => array_get($data, 'limits.threads'),
-            'upload_bw' => array_get($data, 'limits.upload_bw'),
-            'download_bw' => array_get($data, 'limits.download_bw'),
+            'upload_bw_limit' => array_get($data, 'upload_bw_limit'),
+            'download_bw_limit' => array_get($data, 'download_bw_limit'),
             'skip_scripts' => array_get($data, 'skip_scripts', false),
             'allocation_id' => array_get($data, 'allocation.default'),
             'allocation_additional' => array_get($data, 'allocation.additional'),
